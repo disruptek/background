@@ -33,7 +33,7 @@ assert greeting() == 42            # recover any return value
 echo greeting()                    # it's still 42, buddy
 ```
 
-Here's [a slightly more interesting example from the tests](tests/test.nim)
+Here's [a slightly more interesting example from the tests](tests/tdemo.nim)
 in which we make three expensive calls in the background and recover their
 results.
 
