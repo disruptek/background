@@ -15,5 +15,4 @@ task test, "run tests for ci":
     exec "balls"
 
 task demo, "produce a demo":
-  exec """demo docs/demo.svg "nim c --define:release --out=\$1 tests/test.nim""""
-
+  exec """demo docs/demo.svg "nim c --threads:on --gc:arc --define:danger --out=\$1 tests/tdemo.nim" 13"""
