@@ -80,6 +80,8 @@ jobs:
         shell: bash
         run: |
           cd ci
+          echo "--gc:arc" > ../nim.cfg
+          echo "--threads:on" >> ../nim.cfg
           branch=${{ github.ref }}
           branch=${branch##*/}
           nimble doc --threads:on --gc:arc --project --outdir:docs --path="." \
