@@ -95,7 +95,7 @@ jobs:
       - name: Publish docs
         if: >
           github.event_name == 'push' && github.ref == 'refs/heads/master' &&
-          matrix.os == 'macos-latest' && matrix.nim == 'devel'
+          matrix.os == 'macos-latest' && matrix.nim == 'version-1-6'
         uses: crazy-max/ghaction-github-pages@v2.5.0
         with:
           build_dir: ci/docs
