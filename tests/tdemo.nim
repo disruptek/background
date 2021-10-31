@@ -5,6 +5,8 @@ import background
 suite "demonstration of background":
   block:
     ## test making function calls in different threads
+    when not defined(danger): skip"too slow"
+
     var q {.global.}: int
     proc fib(n: int; o: int = 0): int =
       result =
