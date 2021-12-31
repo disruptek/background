@@ -29,8 +29,8 @@ macro background*(call: typed): untyped =
 
     let a = background fib(45)
     let b = background fib(44)
-    assert a() == 1836311903
-    assert b() == 1134903170
+    assert 1836311903 == recover a
+    assert 1134903170 == recover b
 
   if call.kind notin CallNodes:
     error "provide a call() to background"
@@ -80,12 +80,12 @@ macro background*(call: typed): untyped =
   monitor.body =
     genAstOpt({}, worker = bindSym"worker", noop = bindSym"noop",
               c, mCall, Arg = ident"Backgrounded"):
-      var c = whelp mCall              # call the runner continuation
-      var th: Thread[Arg]              # prepare a Thread[Backgrounded]
-      createThread(th, worker, c)      # pass the continuation to the thread
-      noop()                           # return control to the user
-      joinThread th                    # wait for the thread to complete
-      c()                              # runner() to recover any result
+      var c = whelp mCall                 # call the runner continuation
+      var th: Thread[Arg]                 # prepare a Thread[Backgrounded]
+      createThread(th, worker, c)         # pass the continuation to the thread
+      noop()                              # return control to the user
+      joinThread th                       # wait for the thread to complete
+      recover c                           # recover any result
 
   var monCall = newCall(mName)            # this call makes the monitor
   for arg in call[1..^1]:                 # iterate over the original args

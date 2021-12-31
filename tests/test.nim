@@ -10,5 +10,5 @@ suite "how do it do":
     echo "initial thread is ", getThreadId()
     let k = background greetingsFromSomewhereElse()
     echo "this echo is emitted from ", getThreadId()
-    k()
+    recover k
     echo "surprise, we're still in ", getThreadId()

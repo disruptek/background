@@ -35,12 +35,12 @@ suite "demonstration of background":
 
     checkpoint "waiting for results..."
 
-    checkpoint "a: return value ", a()
-    check a() == 1134903170
+    checkpoint "a: return value", recover a
+    check 1134903170 == recover a
     check q == 0
-    checkpoint "b: return value ", b()
-    check b() == 2971215073
+    checkpoint "b: return value", recover b
+    check 2971215073 == recover b
     check q == 5
-    checkpoint "c: return value ", c()
-    check c() == 1836311903
+    checkpoint "c: return value", recover c
+    check 1836311903 == recover c
     check q == 5
