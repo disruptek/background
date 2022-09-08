@@ -79,12 +79,12 @@ macro background*(call: typed): untyped =
   let c = nskVar.genSym"continuation"  # the continuation we'll send off
   monitor.body =
     genAstOpt({}, worker = bindSym"worker", noop = bindSym"noop",
-              c, mCall, Arg = ident"Backgrounded",
+              c, mCall, arg = ident"Backgrounded",
               # Use force-open binding to make sure that the recover() of
               # the generated continuation is bound
               recover = bindSym("recover", brForceOpen)):
       var c = whelp mCall                 # call the runner continuation
-      var th: Thread[Arg]                 # prepare a Thread[Backgrounded]
+      var th: Thread[arg]                 # prepare a Thread[Backgrounded]
       createThread(th, worker, c)         # pass the continuation to the thread
       noop()                              # return control to the user
       joinThread th                       # wait for the thread to complete
