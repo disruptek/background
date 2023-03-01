@@ -15,7 +15,7 @@ suite "how to crash it":
     echo "spawning background call from ", getThreadId()
 
     # run the function in the background
-    let k = background greetingsFromSomewhereElse(3)
+    var k = background greetingsFromSomewhereElse(3)
 
     echo "recovering result in ", getThreadId()
     assert 4 == recover k

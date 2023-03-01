@@ -28,7 +28,7 @@ proc greet(): int =
   echo "hello"
   result = 42
 
-let greeting = background greet()  # run greet() in background
+var greeting = background greet()  # run greet() in background
 assert greeting() == 42            # recover any return value
 echo greeting()                    # it's still 42, buddy
 ```
@@ -59,13 +59,13 @@ let
   y = 46   #     most expensive
   z = 45   # 2nd most expensive
 
-let a = background fib(x)
+var a = background fib(x)
 checkpoint "a: created background invocation"
 
-let b = background fib(y, o = 3)
+var b = background fib(y, o = 3)
 checkpoint "b: created background invocation"
 
-let c = background fib(z, 2)
+var c = background fib(z, 2)
 checkpoint "c: created background invocation"
 
 checkpoint "waiting for results..."
