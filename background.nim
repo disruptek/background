@@ -27,8 +27,8 @@ macro background*(call: typed): untyped =
       else:
         fib(n-1) + fib(n-2)
 
-    let a = background fib(45)
-    let b = background fib(44)
+    var a = background fib(45)
+    var b = background fib(44)
     assert 1836311903 == recover a
     assert 1134903170 == recover b
 
