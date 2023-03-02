@@ -24,13 +24,13 @@ suite "demonstration of background":
       y = 46
       z = 45
 
-    let a = background fib(x)
+    var a = background fib(x)
     checkpoint "a: created background invocation"
 
-    let b = background fib(y, o = 3)
+    var b = background fib(y, o = 3)
     checkpoint "b: created background invocation"
 
-    let c = background fib(z, 2)
+    var c = background fib(z, 2)
     checkpoint "c: created background invocation"
 
     checkpoint "waiting for results..."
