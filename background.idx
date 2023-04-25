@@ -1,0 +1,4 @@
+Backgrounded	background.html#Backgrounded	background: Backgrounded	
+noop	background.html#noop,Backgrounded	background: noop(c: Backgrounded): Backgrounded	
+noop	background.html#noop	background: noop()	
+background	background.html#background.m,typed	background: background(call: typed): untyped	
