@@ -73,7 +73,7 @@ macro background*(call: typed): untyped =
     mParams.add copyNimTree identdefs    # a copy for the monitor's params
     mCall.add mParams[mParams.high][0]   # monitor's call uses the same sym
 
-  let monitor = newProc(mname, mParams)  # creating the monitor
+  let monitor = newProc(mName, mParams)  # creating the monitor
   monitor.addPragma:
     nnkExprColonExpr.newTree(bindSym"cps", ident"Backgrounded")
   let c = nskVar.genSym"continuation"  # the continuation we'll send off
